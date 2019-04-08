@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{ site_title + ' - ' if site_title }}Flask Starter</title>
+	{% assets 'css_all' %}
+	<link rel="stylesheet" href="{{ ASSET_URL }}">
+	{% endassets %}
+</head>
+<body class="pt-5 pb-5">
+	{% block content %}{% endblock content %}
+    {% assets 'js_all' %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    {% block bottom_scripts %}{% endblock bottom_scripts %}
+</body>
+</html>

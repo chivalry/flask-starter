@@ -1,0 +1,41 @@
+{% extends '_layout.html' %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="row justify-content-center">
+		<div class="col-6">
+			<div class="card">
+				<div class="card-body">
+					<nav class="mb-3">
+						<ul class="nav nav-tabs">
+							<li class="nav-item">
+								<a class="nav-link{{ ' active' if page == 'home' }}" href="{{ url_for('homepage.index') }}">Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link{{ ' active' if page == 'about' }}" href="{{ url_for('homepage.about') }}">About</a>
+							</li>
+							{% if current_user.is_authenticated %}
+							<li class="nav-item">
+								<a class="nav-link{{ ' active' if page == 'profile' }}" href="{{ url_for('profile.index') }}">Profile</a>
+							</li>
+							<li class="nav-item ml-auto">
+								<form action="{{ url_for('auth.logout') }}" method="POST">
+									{{ logout_form.csrf_token }}
+									{{ logout_form.submit(class='btn btn-outline-danger btn-sm', value='Logout') }}
+								</form>
+							</li>
+							{% endif %}
+						</ul>
+					</nav>
+					<main>
+						{% if not current_user.is_authenticated %}
+						<p>Want to see your profile? <a href="{{ url_for('auth.login') }}">Login</a> to view it.</p>
+						{% endif %}
+						{% block page %}{% endblock page %}
+					</main>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}
