@@ -34,11 +34,16 @@ Getting Started
     (You can remove `--dev` if you don't want to install dev dependencies)
 
 3.
+    Create a database
+
+    `pipenv run flask db upgrade`
+
+4.
     Create a user
 
     `pipenv run flask create-user -u <username> -p <password>`
 
-4.
+5.
     Run the flask development server
 
     `pipenv run flask run`
