@@ -44,6 +44,14 @@ Getting Started
     `pipenv run flask create-user -u <username> -p <password>`
 
 5.
+    Run the tests
+
+    `PYTHONPATH=. pipenv run pytest`
+
+6.
     Run the flask development server
 
     `pipenv run flask run`
+
+7.
+    Open the app in a browser at http://127.0.0.1:5000
